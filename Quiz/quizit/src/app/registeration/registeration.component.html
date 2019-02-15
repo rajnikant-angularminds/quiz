@@ -1,0 +1,77 @@
+<div class="container py-5">
+  <div class="row">
+      <div class="col-md-12">
+          <h2 class="text-center text-white mb-4">Job Registration Login</h2>
+          <div class="row">
+              <div class="col-md-6 mx-auto">
+
+                  <!-- form card login -->
+                  <div class="card rounded-0">
+                      <div class="card-header">
+                          <h3 class="mb-0">Login</h3>
+                      </div>
+                      <div class="card-body">
+                          <form class="form" role="form" autocomplete="off"  novalidate="" [formGroup]="registrationForm">
+                              <div class="form-group">
+                                  <label for="uname1">FirstName</label>
+                                  <input type="text" class="form-control form-control-lg rounded-0" name="firstname"  formControlName="firstname" #userName
+                                  [class.is-invalid]="registrationForm.controls.firstname.invalid && (registrationForm.controls.firstname.touched || registrationForm.controls.firstname.dirty)">
+
+                                  
+                              </div>
+                              <div class="form-group">
+                                <label for="uname1">lastName</label>
+                                <input type="text" class="form-control form-control-lg rounded-0" name="lastname"  formControlName="lastname" #userName
+                                [class.is-invalid]="registrationForm.controls.lastname.invalid && (registrationForm.controls.lastname.touched || registrationForm.controls.lastname.dirty)">
+
+                                
+                            </div>
+                            <div class="form-group">
+                              <label for="uname1">Email_  Id</label>
+                              <input type="text" class="form-control form-control-lg rounded-0" name="email"  formControlName="email" #userName
+                              [class.is-invalid]="registrationForm.controls.email.invalid && (registrationForm.controls.email.touched || registrationForm.controls.email.dirty)">
+
+                              
+                          </div>
+                          <div class="form-group">
+                            <label for="uname1">UserName</label>
+                            <input type="text" class="form-control form-control-lg rounded-0" name="userName"  formControlName="username" #userName
+                            [class.is-invalid]="registrationForm.controls.username.invalid && (registrationForm.controls.username.touched || registrationForm.controls.username.dirty)">
+
+                            
+                        </div>
+                              <div class="form-group">
+                                  <label>Password</label>
+                                  <input type="password" class="form-control form-control-lg rounded-0" required="" autocomplete="new-password" formControlName="password" #password 
+                                  [class.is-invalid]="registrationForm.controls.password.instvalid && (registrationForm.controls.password.touched || registrationForm.controls.password.dirty)">
+
+                              
+                                 
+                              </div>
+                              <div>
+                                  <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <a class="custom-control-description small text-dark" href="#">Forgot Password</a>
+                                  </label>
+                              </div>
+                              <button type="submit" [disabled]="registrationForm.pristine || registrationForm.invalid " class="btn btn-success btn-lg float-right" id="btnLogin" (click)="register()">Login</button>
+                              
+                          </form>
+                      </div>
+                      <!--/card-block-->
+                  </div>
+                  <!-- /form card login -->
+
+              </div>
+
+
+          </div>
+          <!--/row-->
+
+      </div>
+      <!--/col-->
+  </div>
+  <!--/row-->
+</div>
+<!--/container-->

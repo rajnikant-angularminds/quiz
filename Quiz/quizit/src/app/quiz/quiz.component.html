@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			{{index}}]  Questions
+			<div class="ExamInfo">
+				<!--   exam time
+					    exam name
+					    question no
+					    Sr_No`, `Question`, `Option1`, `Option2`, `Option3`, `Option4`, `Answer
+         		-->
+			</div>
+		</div>
+		 <form [formGroup]="QuizForm">
+       <div class="panel-body">
+		     
+      <textarea class="form-control" rows="5" *ngIf="GetData"> 
+		                           
+         {{GetData.question}}
+      
+        </textarea> 
+        <countdown [config]="config">$!m!:$!s!</countdown>
+        <!-- <countdown [config]="">$!m!:$!s!</countdown> -->
+        <!-- <countdown ng-if="config" countdown="config" >{{config}} </countdown> -->
+        
+       <div class="form-group">
+        
+        
+           <div *ngFor="let opt of myoptions">
+
+            <input type="radio" name="options" id="option1" value="{{opt}}" (change)="radioSelected($event)"  required>
+      {{opt}}
+              </div>  
+                </div>
+                 <div *ngIf="readioCheck">
+                   <span class="text-danger">Select Option</span> 
+                 </div>
+            </div>
+            <div class="panel-footer">
+            <button class="btn  btn-sm next" (click)="NextData()" [disabled]="endExam">Next</button>  
+            <button class="btn  btn-sm next" (click)="EndQuiz()" [disabled]="!endExam">Submit</button>   
+            </div>
+          </form>
+	</div>
+</div>

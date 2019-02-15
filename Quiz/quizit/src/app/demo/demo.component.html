@@ -1,0 +1,188 @@
+<div class="panel panel-primary" style="max-width:500px;margin-left:auto;margin-right:auto;">
+  <div class="panel-heading"> Create Quiz</div>
+  <div class="panel-body">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(f)" #f="ngForm">  
+      <div class="form-group">
+        <label for="name">Quiz Name</label>
+        <input type="text" id="name" class="form-control" placeholder="Name" name="name" formControlName="name"
+          required>
+          <span class="text-danger" *ngIf=" myForm.hasError('required','name') &&(myForm.controls['name'].dirty || myForm.controls['name'].touched)"> 
+              Quiz Name is required
+          </span><br>
+      </div>
+      <div class="form-group">
+        <label for="name">Time</label>
+        <input type="text" id="time" class="form-control" placeholder="Time" name="time" formControlName="time"
+          required>
+          <span class="text-danger" *ngIf=" myForm.hasError('required','time') &&(myForm.controls['time'].dirty || myForm.controls['time'].touched)"> 
+              Time is required
+          </span><br>
+      </div>
+
+      <div formArrayName="questions">
+        <div style="margin-top:5px; margin-bottom:5px;"
+          *ngFor="let question of myForm.get('questions').controls; let i=index">
+          <div [formGroupName]="i">
+            <div class="form-group">
+              
+              <div class="form-inline">
+                <label style="margin-right:5px;" class="col-form-label" for="emailId">Question {{i+1}}</label>
+                <input type="text" class="form-control" placeholder="Question" formControlName="question"
+                  style="margin-right:5px;" required><button style="margin-left:35px;" type="button" class="btn btn-danger" (click)="deleteQuestion(i)">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+                    </button>
+                    <span class="text-danger" *ngIf="question.hasError('required','question') && (question.controls['question'].dirty || question.controls['question'].touched)"> 
+                        Question is required
+                    </span><br>
+              </div>
+            </div>
+            <ol type="A">
+            <div class="form-inline">
+              <div class="form-group">
+                <!-- myForm.value.answer -->
+                <div class="form-inline">
+               <li> </li><input type="radio" class="form-control" placeholder="Option1" name="options{{i}}"
+                  (change)="onSelectionChange(opt1,i)" style="margin-right:5px;" required />
+               <input formControlName="option1" #opt1 class="form-control" style="margin-right:5px;" type="email"
+                  placeholder="Option" required>
+                  <span class="text-danger" *ngIf="question.hasError('required','option1') && (question.controls['option1'].dirty || question.controls['option1'].touched)"> 
+                      Option1 is required
+                  </span><br>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-inline">
+              <div class="form-group">
+                  <div class="form-inline">
+                      <li> </li><input type="radio" class="form-control" placeholder="Option2" name="options{{i}}"
+                  (change)="onSelectionChange(opt2,i)" style="margin-right:5px;" required />
+               <input formControlName="option2" #opt2 class="form-control" style="margin-right:5px;"
+                  placeholder="Option" required>
+                  <span class="text-danger" *ngIf="question.hasError('required','option2') && (question.controls['option2'].dirty || question.controls['option2'].touched)"> 
+                      Option2 is required
+                  </span><br>
+                </div>
+              </div>
+            </div>
+
+            <button style="margin-right:5px;" type="button" class="btn btn-success btn-sm"
+              (click)="addNewAddOption(question.controls.options)">
+              <span class="glyphicon glyphicon-plus" arial-hidden="true"></span> Add New Option
+            </button>
+
+
+
+
+            <div class="form-inline">
+              <div class="form-group">
+                <div formArrayName="options">
+                  <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('options').controls; let j=index">
+                    <div [formGroupName]="j">
+                      <div class="form-group">
+                          <div class="form-inline">
+                      <li> </li><input type="radio" class="form-control" name="options{{i}}"
+                          (change)="onSelectionChange(opt3,i)" style="margin-right:5px;" required />
+                        <input formControlName="option" #opt3 class="form-control" style="margin-right:5px;" type="text"
+                          placeholder="Option" required>
+                           <button style="margin-right:5px;" type="button" class="btn btn-danger btn-sm"
+                          (click)="deleteOption(question.controls.options, j)">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                        <span class="text-danger" *ngIf="lines.hasError('required','option') && (lines.controls['option'].dirty || lines.controls['option'].touched)"> 
+                            Option is required
+                        </span><br> 
+                      </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </ol>
+          </div>
+
+        </div>
+      </div>
+
+      <button style="margin-top:5px; margin-bottom:5px;" type="button" class="btn btn-primary btn-sm"
+        (click)="addNewQuestion()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Question
+      </button><br>
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="button" class="btn btn-basic">Cancel</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <h2>User Form</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" class="form-control" placeholder="Name" name="name" formControlName="name">
+  </div>
+    <button  type="button" class="btn btn-primary btn-sm" (click)="addNewQuestion()">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New question 
+  </button>
+  <div formArrayName="questions">
+    <div  *ngFor="let question of myForm.get('questions').controls; let i=index">
+      <fieldset>
+        <legend><h4>question {{i+1}}:<button style="margin-left:35px;" type="button" class="btn btn-danger" (click)="deleteQuestion(i)">
+<span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove question
+</button>
+</h4></legend>
+question 
+        <div [formGroupName]="i">
+          <div class="form-inline">
+            <div class="form-group">
+                  <input type="text" class="form-control" id="question" placeholder="question"  formControlName="question">
+                  <button   type="button" class="btn btn-success btn-sm" (click)="addNewOptions(question.controls.options)">
+                <!-- <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
+                 Add New Option
+              </button>
+            </div>
+        </div>
+        <!-- otions 
+          <div class="form-inline">
+            <div class="form-group">
+              <div formArrayName="options">
+                <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let opt of question.get('options').controls; let j=index">
+                  <div [formGroupName]="j">
+                    <div class="form-group">
+                         <label style="margin-right:5px;"  class="col-form-label">option {{j + 1}}</label>
+                         <input formControlName="option" class="form-control" style="margin-right:5px;" />
+                          <button style="margin-right:5px;" type="button" class="btn btn-danger btn-sm" (click)="deleteOption(question.controls.options, j)">
+                            <span class="glyphicon glyphicon-minus"aria-hidden="true">
+                             Remove Option</span>
+                             </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end option 
+        </div>
+        <!-- end question -
+      </fieldset>
+    </div>
+  </div>
+
+  
+  <button type="submit" class="btn btn-success">Submit</button>
+  <button type="button" class="btn btn-basic" >Cancel</button>
+</form>
+
+ 
+ -->

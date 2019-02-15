@@ -1,0 +1,56 @@
+
+    <div class="panel panel-primary" style="max-width:500px;margin-left:auto;margin-right:auto;" >
+
+  <div class="panel-heading"> Create Quiz</div>
+    <div class="panel-body">
+<form [formGroup]="QuestionBankForm"(ngSubmit)="submit()">
+    <button type="submit" class="btn-success" (click)="addItem()">Add</button>
+    <button type="submit" class="btn-success" (click)="ShowList()">ShowList</button><br><br>
+  <label>Topic</label><input type="text" formControlName="topic" [class.is-invalid]="QuestionBankForm.controls.topic.invalid  && (QuestionBankForm.controls.topic.touched || QuestionBankForm.controls.topic.dirty)">
+  <span class="text-danger" *ngIf=" QuestionBankForm.hasError('required','topic') &&(QuestionBankForm.controls['topic'].dirty || QuestionBankForm.controls['topic'].touched)"> 
+    Topic is required
+</span><br>
+  <div formArrayName="questions" *ngFor="let item of QuestionBankForm.get('questions').controls; let i = index;">
+          <div [formGroupName]="i">
+                       
+          <table class="table">
+              <tbody>
+                 <tr><td class="label">Question</td><td>
+                   <input type="text" formControlName="question" [class.is-invalid]="item.controls.question.invalid && QuestionBankForm.submitted (item.controls.question.touched || item.controls.question.dirty)" >
+                  <span class="text-danger" *ngIf="item.hasError('required','question') && (item.controls['question'].dirty || item.controls['question'].touched) ">
+                      Question is required</span>
+                  </td></tr>
+                  <tr ><td class="label">Option 1</td><td><input type="text" formControlName="option1" [class.is-invalid]="item.controls.option1.invalid && (QuestionBankForm.controls.option1.touched || item.controls.option1.dirty)"> 
+                    <span class="text-danger" *ngIf="item.hasError('required','option1') && (item.controls['option1'].dirty || item.controls['option1'].touched)">
+                      Option1  is required
+                  </span></td></tr>
+                  <tr><td class="label">Option 2</td><td><input type="text" formControlName="option2" [class.is-invalid]="item.controls.option2.invalid && (item.controls.option2.touched || item.controls.option2.dirty)"> 
+                    <span class="text-danger" *ngIf="item.hasError('required','option2') && (item.controls['option2'].dirty || item.controls['option2'].touched)">
+                      Option2 is required
+                  </span></td></tr>
+                  <tr><td class="label">Option 3</td><td><input type="text" formControlName="option3" [class.is-invalid]="item.controls.option3.invalid && (item.controls.option3.touched || QuestionBankForm.controls.option3.dirty)"> 
+                    <span class="text-danger" *ngIf=" item.hasError('required','option3') && (item.controls['option3'].dirty || item.controls['option3'].touched)">
+                      option3 is required
+                  </span></td></tr>
+                  <tr><td class="label">Option 4</td><td><input type="text" formControlName="option4" [class.is-invalid]="item.controls.option4.invalid && (item.controls.option4.touched || item.controls.option4.dirty)">
+                     <span class="text-danger" *ngIf=" item.hasError('required','option4') && (item.controls['option4'].dirty || item.controls['option4'].touched)">
+                      option4 is required
+                  </span></td></tr>
+                  <tr><td class="label">Answer</td><td><input type="text" formControlName="answer" [class.is-invalid]="item.controls.answer.invalid && (item.controls.answer.touched || item.controls.answer.dirty)">
+                     <span class="text-danger" *ngIf="item.hasError('required','answer') &&(item.controls['answer'].dirty || item.controls['answer'].touched)">
+                      Answer is required
+                  </span></td></tr>
+                 
+               </tbody>
+              </table>  
+             
+             </div> 
+          </div>
+
+</form> 
+</div>
+<div class="panel-footer">
+<button type="submit" class="btn-success" (click)="submit()">Save</button>
+</div>
+</div>
+

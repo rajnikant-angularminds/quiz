@@ -1,0 +1,20 @@
+<div class="container body-content">
+  <div class="panel panel-default col-md-6">
+       
+      <div class="panel-body text-center" *ngIf="marks">
+           <h6>You have Scored </h6> {{marks}}/{{totalques}}<br><br>
+           <button class="btn  btn-sm next" (click)="Finish()" >Finish</button> 
+      </div>
+     
+  </div>
+</div> 
+<!-- 
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+<button (click)='startTimer()'>Start Timer</button>
+<button (click)='pauseTimer()'>Pause</button>
+
+<p>{{timeLeft}} Seconds Left....</p>  -->

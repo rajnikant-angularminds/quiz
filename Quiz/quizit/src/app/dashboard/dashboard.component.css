@@ -1,0 +1,43 @@
+
+
+
+li a span{
+  font-size: 14px;
+}li{
+  list-style-type: none;
+  font-size: 20px;
+}
+a{
+  margin-top: 10px;
+}
+label{
+  font-size: 26px;
+}
+.button {
+  background-color: rgb(85, 186, 226);  
+  border-radius: 5px;
+  color: white;
+  padding: 12px 18px;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.button:focus,
+.button:hover {
+  background-color: rgb(71, 179, 221);
+  color: White;
+  
+}
+.links:hover{
+   color: rgb(247, 55, 48);
+ 
+}
+.content {
+  display: none;
+  margin: 1em 0;
+}
+
+.content.active,
+.no-js .content {
+  display: block;
+}

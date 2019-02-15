@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  
+</head>
+
+
+  <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <ul class="nav navbar-nav navbar-left">
+                <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+                  </ul>
+              </div>  
+           
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/admin"><span class="glyphicon glyphicon-user" >Admin</span></a></li>
+        </ul>
+        </div>
+      </nav>
+    <body>
+      <button type="submit" (click)="logout()">logOut</button><br>
+      <a href="/admin" class="links">Admin</a>
+      <div id="wrapper" class="panel panel-primary " style="max-width:500px;margin-left:auto;margin-right:auto;"> 
+         <div class="panel-heading">List Of Quiz</div>
+                <div class="list">
+                    <div *ngFor="let topic of mytopics; let i=index;">
+                        <div *ngIf="topic && geTime[i]">
+                            <table class="table">
+                                <tbody>
+                                   <tr> <td>{{i+1}}</td><td>{{geTime[i]}}</td>
+                                    <td><li><a href="/quiz/{{topic}}/{{geTime[i]}}" class="links">{{topic}}</a></li></td>
+                                    </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                 
+            </div>
+         </div>
+     
+  </body>
+ </html>
