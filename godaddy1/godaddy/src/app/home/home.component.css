@@ -1,0 +1,40 @@
+button
+{
+    margin-left: 20px;
+}
+#content{
+    width:100%;
+    height:90px;
+    border:1px solid black;
+  }
+  #contentInside{
+    width:280px;
+    height:240px;
+    margin:7px;
+  }
+  .sold{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+      margin-top: 40px;
+  }
+  table
+  {
+    margin-top: 40px;
+  }
+  #search
+  {
+      margin-left: 40px;
+      margin-top: 40px;
+  }
+  .float
+  {
+    float: right;
+  }
+  li{
+      padding: 16px 20px;
+     
+      
+  }
+  a{
+    color: white;
+  }

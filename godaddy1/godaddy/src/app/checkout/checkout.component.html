@@ -1,0 +1,75 @@
+<div id="app" class="container-fluid">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <a class="navbar-brand" href="#">Logo</a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+          <li class="nav-link"><a href="/home">Home</a></li>
+         
+          
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            
+          <div *ngIf="!loggedIn">
+            <li><a href="/login">Login</a></li>
+          </div>
+          <div *ngIf="loggedIn">
+            <button class="btn btn-primary" (click)="logout()">logout</button>
+            </div>
+          </ul>
+          
+    </nav>
+    </div>
+ 
+ <div id="fade" >
+      <div id="contentInside">
+        
+          <div class="center" *ngIf="items">
+              <p>Cart is Empty</p>
+          </div>
+        <div *ngIf="!items">
+     <div *ngIf="domains.length!==0">
+       <div class="card">
+         <div class="card-header">Selected Domains</div>
+             <div class="card-body">
+           
+
+                   <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th scope="col">No.</th>
+                              <th scope="col">Domain Name</th>
+                               <th scope="col">Price</th> 
+                              <th scope="col">Actions</th>
+                              
+                          </tr>
+                      </thead>
+                          <tbody >
+                          
+                                  <tr *ngFor="let result of results;let i=index ">
+                                          <th scope="row">{{i+1}}</th>
+                                          <td scope="row">{{result.domainName}}</td>
+                                           <td>{{result.price}} Rs</td>     
+                                          <td class="d-flex p-2 bd-highlight">
+                                              <button  class="btn btn-danger" (click)="delete(i)"><span class="glyphicon glyphicon-remove"></span></button>
+                                          </td>
+                                           
+                                      </tr>
+                      </tbody>
+                      </table>
+                      <table class="totals">
+                      <tr><td><p>Total </p> </td>        <td><p>{{total}}</p></td></tr>
+                      <tr><td><p>Taxes    </p> </td>   <td><p>{{taxes}}</p></td></tr>
+                      <tr><td><p>Net Payable</p></td>   <td><p>{{netTotal}}</p></td></tr>
+                    </table>
+             </div>
+             <div *ngIf="domains.length!==0">
+             <button  id="btn" class="btn btn-primary" (click)="save()">Proceed to checkout</button>
+            </div>
+       </div>
+     </div>
+     </div>
+     
+ </div> 

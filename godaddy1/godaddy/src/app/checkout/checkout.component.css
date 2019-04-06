@@ -1,0 +1,47 @@
+#content{
+    width:600px;
+    height:90px;
+    border:1px solid black;
+  }
+  #contentInside{
+    width:40%;
+    height:240px;
+    margin:7px;
+  }
+  .card
+  {
+      font-weight: bold;
+      width: 800px;
+      margin-left: 200px;
+  }
+  .card-header
+  {
+      text-align: center;
+      margin-bottom: 10px;
+  }
+  #fade
+  {
+    margin:0 auto;
+  }
+  #btn
+  {
+    margin-left: 300px;
+  }
+  
+p{
+  font-weight: 800;
+    margin-left: 50px;
+    color: black;
+}
+  .totals
+  {
+    margin-top: 40px;
+  }
+  .center
+  {
+    text-align: center;
+    font-size: 30px;
+  }
+  a{
+    color: white;
+  } 
